@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import lombok.Data;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import lombok.extern.slf4j.Slf4j;
 
 @Data
 public class TacoOrder {
