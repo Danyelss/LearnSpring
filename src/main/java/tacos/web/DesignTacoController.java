@@ -5,12 +5,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.extern.slf4j.Slf4j;
 import tacos.Taco;
 import tacos.Ingredient;
 import tacos.Ingredient.Type;
+
+import javax.validation.Valid;
 
 @Slf4j
 @Controller
@@ -47,7 +50,12 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processTaco(Taco taco) {
+    public String processTaco((@Valid @ModelAttribute("taco") Taco taco, Errors errors) {
+        if (errors.hasErrors()) {
+            return "design";
+        }
+
+
         //save the taco..
         // we'll do this in chapter 3
         log.info("Processing taco: " + taco);
