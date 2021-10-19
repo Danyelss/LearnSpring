@@ -2,6 +2,7 @@ package tacos;
 import java.util.List;
 import java.util.ArrayList;
 import lombok.Data;
+
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,8 +11,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import lombok.extern.slf4j.Slf4j;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Data
@@ -45,15 +44,5 @@ public class TacoOrder {
     private List<Taco> tacos = new ArrayList<>();
     public void addTaco(Taco taco) {
         this.tacos.add(taco);
-    }
-
-    @PostMapping
-    public String processOrder(@Valid TacoOrder order, Errors errors) {
-        if (errors.hasErrors()) {
-            return "orderForm";
-        }
-
-        log.info("Order submitted: " + order);
-        return "redirect:/";
     }
 }
