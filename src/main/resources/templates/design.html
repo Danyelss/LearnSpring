@@ -54,11 +54,16 @@
     <div>
         <h3>Name your taco creation:</h3>
         <input type="text" th:field="*{name}"/>
-        <br/>
-
         <span class="validationError"
               th:if="${#fields.hasErrors('name')}"
               th:errors="*{name}">Invalid Name. At least 5 characters.</span>
+        <br/>
+
+        <div>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('ingredients')}"
+              th:errors="*{ingredients}">You must select at least one ingredient.</span>
+        <br/>
 
         <button>Submit Your Taco</button>
     </div>
