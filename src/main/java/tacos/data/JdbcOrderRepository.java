@@ -13,6 +13,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import tacos.Ingredient;
 import tacos.IngredientRef;
 import tacos.Taco;
 import tacos.TacoOrder;
@@ -95,7 +96,20 @@ public class JdbcOrderRepository implements  OrderRepository {
         long tacoId = keyHolder.getKey().longValue();
         taco.setId(tacoId);
 
-        saveIngredientRef(tacoId, taco.getIngredients());
+        // attempt to match parameters
+
+        List<Ingredient> ingredients = taco.getIngredients();
+
+        List<IngredientRef> ingredientRefs = new ArrayList<>();
+
+        int i = 0;
+        for( Ingredient ingredient : ingredients ) {
+            ingredientRefs.add(i, new IngredientRef(ingredient.toString()));
+        }
+
+        //
+
+        saveIngredientRef(tacoId, ingredientRefs);
 
         return tacoId;
     }
