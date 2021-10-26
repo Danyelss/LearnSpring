@@ -71,6 +71,7 @@ public class JdbcOrderRepository implements  OrderRepository {
         return order;
     }
 
+    @Transactional
     private long saveTaco(Long orderId, int orderKey, Taco taco) {
         taco.setCreatedAt(new Date());
 
@@ -105,6 +106,7 @@ public class JdbcOrderRepository implements  OrderRepository {
         int i = 0;
         for( Ingredient ingredient : ingredients ) {
             ingredientRefs.add( new IngredientRef(ingredient.toString()));
+
         }
 
         //
@@ -116,6 +118,7 @@ public class JdbcOrderRepository implements  OrderRepository {
 
     private void saveIngredientRef(
             long tacoId, List<IngredientRef> ingredientRefs) {
+        System.out.println("Shit not working");
         int key = 0;
         for(IngredientRef ingredientRef : ingredientRefs) {
             jdbcOperations.update(
