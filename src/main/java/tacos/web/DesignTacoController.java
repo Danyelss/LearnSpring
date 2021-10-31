@@ -1,8 +1,6 @@
 package tacos.web;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +57,9 @@ public class DesignTacoController {
 
         //save the taco..
         // we'll do this in chapter 3
+
+
+
         log.info("Processing taco: " + taco);
 
         return "redirect:/orders/current";

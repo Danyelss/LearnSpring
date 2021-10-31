@@ -11,22 +11,22 @@ import org.springframework.stereotype.Repository;
 import tacos.Ingredient;
 
 @Repository
-public class JdbcIngredientRepository implements IngredientRepository{
+public class DeletedJdbcIngredientRepository { //implements IngredientRepository{
 
-    private JdbcTemplate jdbcTemplate;
+    /*private JdbcTemplate jdbcTemplate;
 
-    public JdbcIngredientRepository(JdbcTemplate jdbcTemplate) {
+    public DeletedJdbcIngredientRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @Override
+    //@Override
     public Iterable<Ingredient> findAll() {
         return jdbcTemplate.query(
                 "select id, name, type from Ingredient",
                         this::mapRowToIngredient);
     }
 
-    @Override
+    //@Override
     public Optional<Ingredient> findById(String id) {
         List<Ingredient> results = jdbcTemplate.query(
                 "select id, name, type from Ingredient where id=?",
@@ -37,7 +37,7 @@ public class JdbcIngredientRepository implements IngredientRepository{
                 Optional.of(results.get(0));
     }
 
-    @Override
+    //@Override
     public Ingredient save(Ingredient ingredient) {
         jdbcTemplate.update(
                 "insert into Ingredient (id, name, type) values (?, ?, ?)",
@@ -48,11 +48,12 @@ public class JdbcIngredientRepository implements IngredientRepository{
         return ingredient;
     }
 
-    private Ingredient mapRowToIngredient(ResultSet row, int rowNum) throws SQLException {
+    /*private Ingredient mapRowToIngredient(ResultSet row, int rowNum) throws SQLException {
         return new Ingredient(
                 row.getString("id"),
                 row.getString("name"),
-                Ingredient.Type.valueOf(row.getString("type"))
+               Ingredient.Type.valueOf(row.getString("type"))
         );
-    }
+    }*/
 }
+
